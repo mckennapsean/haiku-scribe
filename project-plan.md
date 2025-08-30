@@ -61,7 +61,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
     - If no suitable library exists, plan for using a free API as a fallback.
 
-- [ ] **Build Word Assistant:**
+- [x] **Build Word Assistant:**
 
     - Create the UI panel that appears when a word is clicked.
 

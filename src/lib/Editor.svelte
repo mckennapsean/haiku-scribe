@@ -1,9 +1,12 @@
 <script lang="ts">
   import { syllable } from 'syllable';
+  import WordAssistant from './WordAssistant.svelte';
 
   let line1: string = '';
   let line2: string = '';
   let line3: string = '';
+
+  let selectedWord: string = '';
 
   $: syllableCount1 = syllable(line1);
   $: syllableCount2 = syllable(line2);
@@ -18,6 +21,26 @@
       return 'over-count';
     }
   }
+
+  function handleClick(event: MouseEvent) {
+    const textarea = event.target as HTMLTextAreaElement;
+    const cursorPosition = textarea.selectionStart;
+    const text = textarea.value;
+
+    // Find the start of the word
+    let start = cursorPosition;
+    while (start > 0 && /\S/.test(text[start - 1])) {
+      start--;
+    }
+
+    // Find the end of the word
+    let end = cursorPosition;
+    while (end < text.length && /\S/.test(text[end])) {
+      end++;
+    }
+
+    selectedWord = text.substring(start, end).trim();
+  }
 </script>
 
 <div class="haiku-editor">
@@ -26,6 +49,7 @@
       bind:value={line1}
       placeholder="First line (5 syllables)"
       class={getSyllableClass(syllableCount1, 5)}
+      on:click={handleClick}
     ></textarea>
     <span class="syllable-count">{syllableCount1}</span>
   </div>
@@ -34,6 +58,7 @@
       bind:value={line2}
       placeholder="Second line (7 syllables)"
       class={getSyllableClass(syllableCount2, 7)}
+      on:click={handleClick}
     ></textarea>
     <span class="syllable-count">{syllableCount2}</span>
   </div>
@@ -42,10 +67,13 @@
       bind:value={line3}
       placeholder="Third line (5 syllables)"
       class={getSyllableClass(syllableCount3, 5)}
+      on:click={handleClick}
     ></textarea>
     <span class="syllable-count">{syllableCount3}</span>
   </div>
 </div>
+
+<WordAssistant word={selectedWord} />
 
 <style>
   .haiku-editor {
