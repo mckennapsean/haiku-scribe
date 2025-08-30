@@ -21,7 +21,9 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@types/uuid": "^10.0.0",
 		"syllable": "^5.0.1",
-		"thesaurus": "^0.0.1"
+		"thesaurus": "^0.0.1",
+		"uuid": "^11.1.0"
 	}
 }

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { syllable } from 'syllable';
   import WordAssistant from './WordAssistant.svelte';
-  import { haikuDraftStore } from '../utils/localStore';
+  import { haikuDraftStore, saveHaiku } from '../utils/localStore';
+  import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
 
   let line1: string;
   let line2: string;
@@ -54,6 +55,21 @@
 
     selectedWord = text.substring(start, end).trim();
   }
+
+  function handleSaveHaiku() {
+    const newHaiku = {
+      id: uuidv4(),
+      line1,
+      line2,
+      line3,
+      createdAt: new Date().toISOString()
+    };
+    saveHaiku(newHaiku);
+    // Clear the current draft after saving
+    line1 = '';
+    line2 = '';
+    line3 = '';
+  }
 </script>
 
 <div class="haiku-editor">
@@ -84,6 +100,7 @@
     ></textarea>
     <span class="syllable-count">{syllableCount3}</span>
   </div>
+  <button on:click={handleSaveHaiku}>Save Haiku</button>
 </div>
 
 <WordAssistant word={selectedWord} />
@@ -143,5 +160,20 @@
 
   .over-count {
     background-color: #ffebee; /* A subtle, non-jarring red */
+  }
+
+  button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  button:hover {
+    background-color: #0056b3;
   }
 </style>

@@ -57,6 +57,23 @@
     savedHaikusStore.set(currentHaikus); // Update the store
   }
 
+  // Function to delete a haiku from local storage
+  export function deleteHaiku(id: string) {
+    let currentHaikus = loadSavedHaikus();
+    currentHaikus = currentHaikus.filter(haiku => haiku.id !== id);
+    localStorage.setItem(LOCAL_STORAGE_HAIKUS_KEY, JSON.stringify(currentHaikus));
+    savedHaikusStore.set(currentHaikus); // Update the store
+  }
+
+  // Function to load a saved haiku into the editor
+  export function loadHaikuToEditor(haiku: SavedHaiku) {
+    haikuDraftStore.set({
+      line1: haiku.line1,
+      line2: haiku.line2,
+      line3: haiku.line3
+    });
+  }
+
   // Create a writable store for saved haikus
   export const savedHaikusStore = writable<SavedHaiku[]>(loadSavedHaikus());
 </script>

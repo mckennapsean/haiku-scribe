@@ -74,7 +74,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Build "My Haikus" Page:** Design the page to display a list of saved haikus, each showing its text and creation date.
 
-- [ ] **Add Management Functions:** Implement the "Save," "Load to Editor," "Copy to Clipboard," and "Delete" functionalities for saved haikus.
+- [x] **Add Management Functions:** Implement the "Save," "Load to Editor," "Copy to Clipboard," and "Delete" functionalities for saved haikus.
 
 
 ---
