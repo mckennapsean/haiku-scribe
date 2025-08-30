@@ -33,7 +33,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 #### **Core Editor & Syllable Logic**
 
-- [ ] **Build Editor UI:** Create the three-line text input interface.
+- [x] **Build Editor UI:** Create the three-line text input interface.
 
 - [ ] **Research & Implement Syllable Counting:**
 
