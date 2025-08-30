@@ -8,19 +8,41 @@
   $: syllableCount1 = syllable(line1);
   $: syllableCount2 = syllable(line2);
   $: syllableCount3 = syllable(line3);
+
+  function getSyllableClass(count: number, target: number): string {
+    if (count < target) {
+      return 'under-count';
+    } else if (count === target) {
+      return 'correct-count';
+    } else {
+      return 'over-count';
+    }
+  }
 </script>
 
 <div class="haiku-editor">
   <div class="line-input-group">
-    <textarea bind:value={line1} placeholder="First line (5 syllables)"></textarea>
+    <textarea
+      bind:value={line1}
+      placeholder="First line (5 syllables)"
+      class={getSyllableClass(syllableCount1, 5)}
+    ></textarea>
     <span class="syllable-count">{syllableCount1}</span>
   </div>
   <div class="line-input-group">
-    <textarea bind:value={line2} placeholder="Second line (7 syllables)"></textarea>
+    <textarea
+      bind:value={line2}
+      placeholder="Second line (7 syllables)"
+      class={getSyllableClass(syllableCount2, 7)}
+    ></textarea>
     <span class="syllable-count">{syllableCount2}</span>
   </div>
   <div class="line-input-group">
-    <textarea bind:value={line3} placeholder="Third line (5 syllables)"></textarea>
+    <textarea
+      bind:value={line3}
+      placeholder="Third line (5 syllables)"
+      class={getSyllableClass(syllableCount3, 5)}
+    ></textarea>
     <span class="syllable-count">{syllableCount3}</span>
   </div>
 </div>
@@ -67,5 +89,18 @@
     color: #777;
     min-width: 20px; /* Ensure consistent spacing */
     text-align: right;
+  }
+
+  /* Color-blind friendly feedback styles */
+  .under-count {
+    background-color: #f0f0f0; /* Light gray */
+  }
+
+  .correct-count {
+    background-color: #e0f7fa; /* A pleasant, calm blue */
+  }
+
+  .over-count {
+    background-color: #ffebee; /* A subtle, non-jarring red */
   }
 </style>

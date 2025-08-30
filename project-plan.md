@@ -43,7 +43,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
     - Implement the chosen solution to count syllables in real-time as the user types.
 
-- [ ] **Implement Color-Blind Friendly Feedback:**
+- [x] **Implement Color-Blind Friendly Feedback:**
 
     - Display the live syllable count next to each line.
 
