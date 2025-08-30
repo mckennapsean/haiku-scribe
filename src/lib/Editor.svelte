@@ -1,10 +1,23 @@
 <script lang="ts">
   import { syllable } from 'syllable';
   import WordAssistant from './WordAssistant.svelte';
+  import { haikuDraftStore } from '../utils/localStore';
 
-  let line1: string = '';
-  let line2: string = '';
-  let line3: string = '';
+  let line1: string;
+  let line2: string;
+  let line3: string;
+
+  // Initialize from local storage
+  haikuDraftStore.subscribe(draft => {
+    line1 = draft.line1;
+    line2 = draft.line2;
+    line3 = draft.line3;
+  })(); // Immediately invoke to get initial value
+
+  // Update store on changes
+  $: {
+    haikuDraftStore.set({ line1, line2, line3 });
+  }
 
   let selectedWord: string = '';
 

@@ -70,7 +70,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 #### **Haiku Management**
 
-- [ ] **Implement Local Storage:** Create utility functions to save to and load from the browser's local storage. Implement auto-saving for the current draft.
+- [x] **Implement Local Storage:** Create utility functions to save to and load from the browser's local storage. Implement auto-saving for the current draft.
 
 - [ ] **Build "My Haikus" Page:** Design the page to display a list of saved haikus, each showing its text and creation date.
 
