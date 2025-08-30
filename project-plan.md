@@ -26,7 +26,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Component Scaffolding:** Create placeholder Svelte components for `Editor.svelte`, `WordAssistant.svelte`, and `HaikuList.svelte`.
 
-- [ ] **Routing:** Set up two basic routes using SvelteKit: one for the main editor (`/`) and one for the saved haikus page (`/my-haikus`).
+- [x] **Routing:** Set up two basic routes using SvelteKit: one for the main editor (`/`) and one for the saved haikus page (`/my-haikus`).
 
 - [ ] **Initial Styling:** Implement a basic, clean, and responsive CSS structure for mobile and desktop views.
 
