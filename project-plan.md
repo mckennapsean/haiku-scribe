@@ -35,7 +35,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Build Editor UI:** Create the three-line text input interface.
 
-- [ ] **Research & Implement Syllable Counting:**
+- [x] **Research & Implement Syllable Counting:**
 
     - Evaluate options for American English syllable counting.
 

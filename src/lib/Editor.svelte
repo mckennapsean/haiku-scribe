@@ -1,13 +1,28 @@
 <script lang="ts">
+  import { syllable } from 'syllable';
+
   let line1: string = '';
   let line2: string = '';
   let line3: string = '';
+
+  $: syllableCount1 = syllable(line1);
+  $: syllableCount2 = syllable(line2);
+  $: syllableCount3 = syllable(line3);
 </script>
 
 <div class="haiku-editor">
-  <textarea bind:value={line1} placeholder="First line (5 syllables)"></textarea>
-  <textarea bind:value={line2} placeholder="Second line (7 syllables)"></textarea>
-  <textarea bind:value={line3} placeholder="Third line (5 syllables)"></textarea>
+  <div class="line-input-group">
+    <textarea bind:value={line1} placeholder="First line (5 syllables)"></textarea>
+    <span class="syllable-count">{syllableCount1}</span>
+  </div>
+  <div class="line-input-group">
+    <textarea bind:value={line2} placeholder="Second line (7 syllables)"></textarea>
+    <span class="syllable-count">{syllableCount2}</span>
+  </div>
+  <div class="line-input-group">
+    <textarea bind:value={line3} placeholder="Third line (5 syllables)"></textarea>
+    <span class="syllable-count">{syllableCount3}</span>
+  </div>
 </div>
 
 <style>
@@ -23,8 +38,14 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
+  .line-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   textarea {
-    width: 100%;
+    flex-grow: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -32,12 +53,19 @@
     line-height: 1.5;
     resize: vertical;
     min-height: 60px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box;
   }
 
   textarea:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+
+  .syllable-count {
+    font-size: 0.9em;
+    color: #777;
+    min-width: 20px; /* Ensure consistent spacing */
+    text-align: right;
   }
 </style>
