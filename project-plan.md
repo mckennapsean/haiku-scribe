@@ -24,7 +24,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Initialize Project:** Set up the `haiku-scribe` Git repository and initialize a new SvelteKit project.
 
-- [ ] **Component Scaffolding:** Create placeholder Svelte components for `Editor.svelte`, `WordAssistant.svelte`, and `HaikuList.svelte`.
+- [x] **Component Scaffolding:** Create placeholder Svelte components for `Editor.svelte`, `WordAssistant.svelte`, and `HaikuList.svelte`.
 
 - [ ] **Routing:** Set up two basic routes using SvelteKit: one for the main editor (`/`) and one for the saved haikus page (`/my-haikus`).
 
