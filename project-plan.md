@@ -55,7 +55,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
         - **Over count:** A subtle, non-jarring red
 
-- [ ] **Research & Implement Synonym Lookup:**
+- [x] **Research & Implement Synonym Lookup:**
 
     - Evaluate options for an offline synonym dictionary/library.
 
