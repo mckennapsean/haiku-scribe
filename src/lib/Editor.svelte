@@ -1,7 +1,7 @@
 <script lang="ts">
   import { syllable } from 'syllable';
   import WordAssistant from './WordAssistant.svelte';
-  import { haikuDraftStore, saveHaiku } from '../utils/localStore';
+  import { haikuDraftStore, saveHaiku } from './utils/localStore';
   import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
 
   let line1: string;
