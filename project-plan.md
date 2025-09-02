@@ -117,3 +117,24 @@ This final phase is about adding personality and delight to the finished applica
 - [ ] **Implement Visual Easter Egg:** Create a fun, subtle visual effect when an easter egg is triggered. This could be a brief color shift, a shower of confetti, or a simple animation.
 
 - [ ] **Implement Console Easter Egg:** Add a creative message that logs to the browser's developer console, rewarding curious users who look under the hood. For example: `console.log("Haiku Scribe // 10001 // 0x11");`
+
+
+---
+
+## Phase 4: Polish & Refinement
+
+This phase focuses on refining the project's identity, user experience, and cleaning up remaining boilerplate.
+
+#### **Branding and Identity**
+
+- [ ] **Update README.md:** Describe what Haiku Scribe is, its features, and why someone would want to use it.
+- [ ] **Update Page Title & Favicon:** Change the HTML page title to "Haiku Scribe" and replace the default Svelte logo with a custom one (placeholder initially, then custom asset).
+
+#### **Application Layout and Navigation**
+
+- [ ] **Create a Shared Header:** Add a persistent header to the application in `src/routes/+layout.svelte`. This header should contain the application's name and clear navigation links to switch between the "Editor" (/) and "My Haikus" (/my-haikus) pages.
+- [ ] **Add a Footer:** Implement a simple footer for the application.
+
+#### **Code and Comment Cleanup**
+
+- [ ] **Remove Boilerplate Comments:** Clean up boilerplate comments in files like `src/lib/index.ts` and `app.d.ts`.
