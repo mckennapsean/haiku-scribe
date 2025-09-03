@@ -14,8 +14,8 @@
 	<nav>
 		<h1>Haiku Scribe</h1>
 		<ul>
-			<li><a href="{base}/" class:active={data.url === '/'}>Editor</a></li>
-			<li><a href="{base}/my-haikus" class:active={data.url === '/my-haikus'}>My Haikus</a></li>
+			<li><a href="{base}/" class:active={data.url === `${base}/`}>Editor</a></li>
+			<li><a href="{base}/my-haikus" class:active={data.url === `${base}/my-haikus`}>My Haikus</a></li>
 		</ul>
 	</nav>
 </header>
