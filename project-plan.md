@@ -76,6 +76,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Add Management Functions:** Implement the "Save," "Load to Editor," "Copy to Clipboard," and "Delete" functionalities for saved haikus.
 
+- [ ] **Delete and save Haikus seamlessly:** see the design doc: `create-delete-design-doc.md` to build this feature to replace other methods for delete/save.
 
 ---
 
