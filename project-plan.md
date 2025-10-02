@@ -76,36 +76,17 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Add Management Functions:** Implement the "Save," "Load to Editor," "Copy to Clipboard," and "Delete" functionalities for saved haikus.
 
-- [ ] **Delete and save Haikus seamlessly:** see the design doc: `create-delete-design-doc.md` to build this feature to replace other methods for delete/save.
+- [ ] **Delete and save Haikus seamlessly:** see the design doc: `create-delete-design-doc.md` to build this feature to replace other methods for delete/save.i
 
 ---
 
-## Phase 2: The AI-Powered Poet
+## Phase 2: The AI-Powered Poet (DEFERRED)
 
-This phase enhances the core tool with AI-driven creative assistance.
+**Reasoning:** To accelerate the launch of the core Haiku Workbench (Phase 1), the AI features are being deferred. The core AI functionality (prompt engineering and testing) will be explored separately using the Gemini web CLI, which avoids the need to wire up and secure API keys in the application for the initial release.
 
-- [ ] **Select AI Provider & Set Up:**
-
-    - Choose an AI provider (e.g., Google AI, OpenAI).
-
-    - Implement a secure client-side setup for the API key and create a simple API service wrapper.
-
-- [ ] **Text-to-Haiku Feature:**
-
-    - Design and build the UI component with a large text area for user input and a button to trigger generation.
-
-    - Develop a clear and effective prompt to send to the AI, instructing it to summarize the input text into a 5-7-5 haiku.
-
-    - Display the generated haiku and handle loading/error states gracefully.
-
-- [ ] **"Stuck?" (Line Completion) Feature:**
-
-    - Add a "Stuck?" button to the main editor UI.
-
-    - Develop a prompt that sends the existing line(s) to the AI and asks for suggestions to complete the current line within the syllable limit.
-
-    - Display the AI's suggestions to the user in a non-intrusive way (e.g., a small pop-up or in the assistant panel).
-
+**Feature Ideas (for future implementation):**
+- **Text-to-Haiku:** Summarize user input text into a 5-7-5 haiku.
+- **"Stuck?" (Line Completion):** Suggest completions for the current line within the syllable limit.
 
 ---
 
