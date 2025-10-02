@@ -3,6 +3,7 @@
   import WordAssistant from './WordAssistant.svelte';
   import { haikuDraftStore, saveHaiku } from './utils/localStore';
   import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
+  import { onMount } from 'svelte';
 
   let line1: string;
   let line2: string;
@@ -56,6 +57,63 @@
     selectedWord = text.substring(start, end).trim();
   }
 
+  // --- Drag/Swipe Logic for Save/Clear ---
+  let dragX = 0;
+  let startX = 0;
+  let isDragging = false;
+  let editorElement: HTMLDivElement; // Bind to the editor element
+
+  const SAVE_THRESHOLD_PERCENT = 0.3; // 30%
+  const CLEAR_THRESHOLD_PERCENT = 0.6; // 60%
+
+  function handleStart(event: MouseEvent | TouchEvent) {
+    // Only start dragging if the user is interacting with the editor area, not the word assistant
+    if (event.target instanceof HTMLElement && event.target.closest('.haiku-editor-card')) {
+      isDragging = true;
+      startX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+      // Prevent text selection while dragging
+      document.body.style.userSelect = 'none';
+    }
+  }
+
+  function handleMove(event: MouseEvent | TouchEvent) {
+    if (!isDragging) return;
+
+    const currentX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    dragX = currentX - startX;
+  }
+
+  function handleEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    document.body.style.userSelect = '';
+
+    const editorWidth = editorElement.offsetWidth;
+    const saveThreshold = editorWidth * SAVE_THRESHOLD_PERCENT;
+    const clearThreshold = editorWidth * CLEAR_THRESHOLD_PERCENT;
+
+    if (dragX > saveThreshold) {
+      // Save Action (Swipe Right)
+      handleSaveHaiku();
+      // Animate off-screen right and reset
+      dragX = editorWidth;
+      setTimeout(() => {
+        dragX = 0;
+      }, 300); // Reset after animation
+    } else if (dragX < -clearThreshold) {
+      // Clear Action (Swipe Left)
+      // Animate off-screen left and reset
+      dragX = -editorWidth;
+      setTimeout(() => {
+        handleClearHaiku();
+        dragX = 0;
+      }, 300); // Reset after animation
+    } else {
+      // Snap back
+      dragX = 0;
+    }
+  }
+
   function handleSaveHaiku() {
     const newHaiku = {
       id: uuidv4(),
@@ -65,57 +123,144 @@
       createdAt: new Date().toISOString()
     };
     saveHaiku(newHaiku);
-    // Clear the current draft after saving
+    // Do NOT clear the current draft here, the swipe action handles the visual clear/reset
+  }
+
+  function handleClearHaiku() {
+    // Clear the current draft
     line1 = '';
     line2 = '';
     line3 = '';
   }
+
+  // Add global listeners for drag events
+  onMount(() => {
+    window.addEventListener('mousemove', handleMove as EventListener);
+    window.addEventListener('mouseup', handleEnd);
+    window.addEventListener('touchmove', handleMove as EventListener);
+    window.addEventListener('touchend', handleEnd);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove as EventListener);
+      window.removeEventListener('mouseup', handleEnd);
+      window.removeEventListener('touchmove', handleMove as EventListener);
+      window.removeEventListener('touchend', handleEnd);
+    };
+  });
 </script>
 
-<div class="haiku-editor">
-  <div class="line-input-group">
-    <textarea
-      bind:value={line1}
-      placeholder="First line (5 syllables)"
-      class={getSyllableClass(syllableCount1, 5)}
-      on:click={handleClick}
-    ></textarea>
-    <span class="syllable-count">{syllableCount1}</span>
+<div class="haiku-editor-container">
+  <!-- Background for Save (Right Swipe) -->
+  <div class="swipe-background save-bg" style="opacity: {dragX > 0 ? dragX / editorElement?.offsetWidth / SAVE_THRESHOLD_PERCENT : 0}">
+    <span class="icon">💾</span> Save
   </div>
-  <div class="line-input-group">
-    <textarea
-      bind:value={line2}
-      placeholder="Second line (7 syllables)"
-      class={getSyllableClass(syllableCount2, 7)}
-      on:click={handleClick}
-    ></textarea>
-    <span class="syllable-count">{syllableCount2}</span>
+
+  <!-- Background for Clear (Left Swipe) -->
+  <div class="swipe-background clear-bg" style="opacity: {dragX < 0 ? Math.abs(dragX) / editorElement?.offsetWidth / CLEAR_THRESHOLD_PERCENT : 0}">
+    Clear <span class="icon">🗑️</span>
   </div>
-  <div class="line-input-group">
-    <textarea
-      bind:value={line3}
-      placeholder="Third line (5 syllables)"
-      class={getSyllableClass(syllableCount3, 5)}
-      on:click={handleClick}
-    ></textarea>
-    <span class="syllable-count">{syllableCount3}</span>
+
+  <div
+    class="haiku-editor-card"
+    bind:this={editorElement}
+    style="transform: translateX({dragX}px); transition: {isDragging ? 'none' : 'transform 0.3s ease-out'};"
+    on:mousedown={handleStart}
+    on:touchstart={handleStart}
+  >
+    <div class="haiku-editor">
+      <div class="line-input-group">
+        <textarea
+          bind:value={line1}
+          placeholder="First line (5 syllables)"
+          class={getSyllableClass(syllableCount1, 5)}
+          on:click={handleClick}
+        ></textarea>
+        <span class="syllable-count">{syllableCount1}</span>
+      </div>
+      <div class="line-input-group">
+        <textarea
+          bind:value={line2}
+          placeholder="Second line (7 syllables)"
+          class={getSyllableClass(syllableCount2, 7)}
+          on:click={handleClick}
+        ></textarea>
+        <span class="syllable-count">{syllableCount2}</span>
+      </div>
+      <div class="line-input-group">
+        <textarea
+          bind:value={line3}
+          placeholder="Third line (5 syllables)"
+          class={getSyllableClass(syllableCount3, 5)}
+          on:click={handleClick}
+        ></textarea>
+        <span class="syllable-count">{syllableCount3}</span>
+      </div>
+    </div>
   </div>
-  <button on:click={handleSaveHaiku}>Save Haiku</button>
 </div>
 
 <WordAssistant word={selectedWord} />
 
 <style>
+  .haiku-editor-container {
+    position: relative;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0; /* Remove padding from container */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden; /* Hide the card when it slides off */
+  }
+
+  .haiku-editor-card {
+    position: relative;
+    z-index: 10; /* Ensure card is above background */
+    background-color: white; /* Ensure card has a solid background */
+    cursor: grab;
+    touch-action: pan-y; /* Allow vertical scrolling, but handle horizontal drag */
+    /* Initial transition for snap-back and slide-off */
+    transition: transform 0.3s ease-out;
+  }
+
   .haiku-editor {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px; /* Add padding back to the editor content */
+  }
+
+  .swipe-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    z-index: 5;
+    pointer-events: none; /* Ensure background doesn't interfere with drag */
+    opacity: 0; /* Controlled by inline style */
+  }
+
+  .save-bg {
+    background-color: #4CAF50; /* Green for Save */
+    justify-content: flex-start;
+  }
+
+  .clear-bg {
+    background-color: #F44336; /* Red for Clear */
+    justify-content: flex-end;
+  }
+
+  .swipe-background .icon {
+    font-size: 1.5em;
+    margin: 0 10px;
   }
 
   .line-input-group {
@@ -160,20 +305,5 @@
 
   .over-count {
     background-color: #ffebee; /* A subtle, non-jarring red */
-  }
-
-  button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  button:hover {
-    background-color: #0056b3;
   }
 </style>

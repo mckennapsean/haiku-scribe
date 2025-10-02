@@ -76,7 +76,7 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 
 - [x] **Add Management Functions:** Implement the "Save," "Load to Editor," "Copy to Clipboard," and "Delete" functionalities for saved haikus.
 
-- [ ] **Delete and save Haikus seamlessly:** see the design doc: `create-delete-design-doc.md` to build this feature to replace other methods for delete/save.i
+- [x] **Delete and save Haikus seamlessly:** see the design doc: `create-delete-design-doc.md` to build this feature to replace other methods for delete/save.i
 
 ---
 
@@ -93,6 +93,16 @@ This phase focuses on creating a complete, standalone tool for writing haikus.
 ## Phase 3: Flair & Fun
 
 This final phase is about adding personality and delight to the finished application.
+
+#### Editor Polish
+
+- [ ] **Drag/Swipe Usability:** Increase the draggable area and card width for better usability, and add whitespace around the haiku lines to make them easier to grab.
+- [ ] **Syllable Counter Update:** Update the syllable counter to display the target count (e.g., "0 / 5") and remove the target count from the placeholder text.
+- [ ] **Placeholder Text Cleanup:** Simplify placeholder text (e.g., remove "First/Second/Third line" and "syllables" count).
+- [ ] **Textarea Styling:** Remove the resize handle from textareas and style them to blend better with the card background.
+- [ ] **Completion Feedback:** Add visual feedback (e.g., a color change or icon) to the card when the haiku is complete (5-7-5).
+- [ ] **Initial Focus:** Ensure the first line's textarea is focused on page load, with the caret at the end of any existing draft text.
+- [ ] **Save Validation:** Implement logic to prevent saving empty haikus and optionally warn the user if the haiku is incomplete (not 5-7-5).
 
 - [ ] **Design Easter Egg Triggers:** Decide how users will activate the easter eggs. For example, typing "10001" or "0x11" directly into a haiku line.
 
