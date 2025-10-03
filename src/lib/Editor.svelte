@@ -26,6 +26,7 @@
   $: syllableCount1 = syllable(line1);
   $: syllableCount2 = syllable(line2);
   $: syllableCount3 = syllable(line3);
+  $: isHaikuDone = syllableCount1 === 5 && syllableCount2 === 7 && syllableCount3 === 5;
 
   function getSyllableClass(count: number, target: number): string {
     if (count < target) {
@@ -162,6 +163,7 @@
 
   <div
     class="haiku-editor-card"
+    class:haiku-done={isHaikuDone}
     bind:this={editorElement}
     style="transform: translateX({dragX}px); transition: {isDragging ? 'none' : 'transform 0.3s ease-out'};"
     on:mousedown={handleStart}
@@ -222,6 +224,10 @@
     touch-action: pan-y; /* Allow vertical scrolling, but handle horizontal drag */
     /* Initial transition for snap-back and slide-off */
     transition: transform 0.3s ease-out;
+  }
+
+  .haiku-done {
+    background-color: #e6ffe6; /* Light green for done haikus */
   }
 
   .haiku-editor {
