@@ -117,6 +117,22 @@
   }
 
   function handleSaveHaiku() {
+    // 1. Prevent saving empty haikus
+    if (!line1.trim() && !line2.trim() && !line3.trim()) {
+      alert('Cannot save an empty haiku.');
+      return;
+    }
+
+    // 2. Optionally warn if incomplete (not 5-7-5)
+    if (!isHaikuDone) {
+      const confirmation = confirm(
+        'This haiku is not 5-7-5. Are you sure you want to save it?'
+      );
+      if (!confirmation) {
+        return;
+      }
+    }
+
     const newHaiku = {
       id: uuidv4(),
       line1,
