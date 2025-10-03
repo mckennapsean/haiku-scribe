@@ -171,29 +171,29 @@
       <div class="line-input-group">
         <textarea
           bind:value={line1}
-          placeholder="First line (5 syllables)"
+          placeholder="First line"
           class={getSyllableClass(syllableCount1, 5)}
           on:click={handleClick}
         ></textarea>
-        <span class="syllable-count">{syllableCount1}</span>
+        <span class="syllable-count">{syllableCount1} / 5</span>
       </div>
       <div class="line-input-group">
         <textarea
           bind:value={line2}
-          placeholder="Second line (7 syllables)"
+          placeholder="Second line"
           class={getSyllableClass(syllableCount2, 7)}
           on:click={handleClick}
         ></textarea>
-        <span class="syllable-count">{syllableCount2}</span>
+        <span class="syllable-count">{syllableCount2} / 7</span>
       </div>
       <div class="line-input-group">
         <textarea
           bind:value={line3}
-          placeholder="Third line (5 syllables)"
+          placeholder="Third line"
           class={getSyllableClass(syllableCount3, 5)}
           on:click={handleClick}
         ></textarea>
-        <span class="syllable-count">{syllableCount3}</span>
+        <span class="syllable-count">{syllableCount3} / 5</span>
       </div>
     </div>
   </div>
@@ -277,10 +277,11 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1.1em;
-    line-height: 1.5;
+    font-size: 1.5em;
+    line-height: 20px;
     resize: vertical;
-    min-height: 60px;
+    min-height: 40px;
+    overflow: hidden;
     box-sizing: border-box;
   }
 
