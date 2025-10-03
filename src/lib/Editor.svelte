@@ -275,11 +275,11 @@
     flex-grow: 1;
     min-width: 0; /* Fix for flex item not expanding correctly */
     padding: 10px;
-    border: 1px solid #ddd;
+    border: none; /* Removed border to blend with card background */
     border-radius: 4px;
     font-size: 1.5em;
     line-height: 20px;
-    resize: vertical;
+    resize: none; /* Removed resize handle */
     min-height: 40px;
     overflow: hidden;
     box-sizing: border-box;
@@ -287,7 +287,6 @@
 
   textarea:focus {
     outline: none;
-    border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
   }
 
