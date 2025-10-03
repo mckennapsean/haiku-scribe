@@ -9,13 +9,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* padding: 0 3rem; Removed to prevent affecting the header */
 }
 
 main {
   flex-grow: 1;
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  /* padding: 1rem; Removed to prevent constraining inner content */
+  /* max-width: 800px; Removed to allow nested content to dictate width */
+  /* margin: 0 auto; Removed to fix width constraint */
 }
 
 h1, h2, h3, h4, h5, h6 {

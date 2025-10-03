@@ -204,7 +204,7 @@
 <style>
   .haiku-editor-container {
     position: relative;
-    max-width: 500px;
+    max-width: 400px;
     margin: 20px auto;
     padding: 0; /* Remove padding from container */
     border: 1px solid #eee;
@@ -215,6 +215,7 @@
 
   .haiku-editor-card {
     position: relative;
+    width: 100%; /* Added to ensure card fills container width */
     z-index: 10; /* Ensure card is above background */
     background-color: white; /* Ensure card has a solid background */
     cursor: grab;
@@ -227,7 +228,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px; /* Add padding back to the editor content */
+    /* Increased padding for better touch input: 80px left, 60px right (to balance with counter) */
+    padding: 20px 20px 20px 40px;
   }
 
   .swipe-background {
@@ -271,6 +273,7 @@
 
   textarea {
     flex-grow: 1;
+    min-width: 0; /* Fix for flex item not expanding correctly */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;

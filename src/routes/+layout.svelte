@@ -59,8 +59,7 @@
 	}
 
 	main {
-		max-width: 960px;
-		margin: 1em auto;
-		padding: 0 1em;
+		padding: 0 3rem;
+		box-sizing: border-box; /* Prevent padding from causing overflow */
 	}
 </style>

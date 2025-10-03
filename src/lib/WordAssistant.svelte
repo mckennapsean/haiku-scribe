@@ -38,12 +38,15 @@
 
 <style>
   .word-assistant-panel {
+    max-width: 300px;
+    width: 100%;
     border: 1px solid #eee;
     border-radius: 8px;
     padding: 15px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-top: 20px;
+    margin: 20px auto;
+    box-sizing: border-box;
   }
 
   .word-assistant-panel h3 {
