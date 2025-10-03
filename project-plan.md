@@ -129,4 +129,4 @@ This phase focuses on refining the project's identity, user experience, and clea
 
 #### **Code and Comment Cleanup**
 
-- [ ] **Remove Boilerplate Comments:** Clean up boilerplate comments in files like `src/lib/index.ts` and `app.d.ts`.
+- [x] **Remove Boilerplate Comments:** Clean up boilerplate comments in files like `src/lib/index.ts` and `app.d.ts`.
