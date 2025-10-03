@@ -2,6 +2,8 @@
 
 A simple, elegant tool for writing haikus.
 
+![Haiku Scribe Screenshot](haiku-scribe.png)
+
 ## Project Overview
 
 Haiku Scribe is a modern, web-based haiku editor designed to help poets and writers craft perfect 5-7-5 syllable poems. Built with SvelteKit, it offers a clean, distraction-free interface and powerful real-time assistance.

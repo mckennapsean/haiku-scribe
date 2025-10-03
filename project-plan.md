@@ -120,12 +120,12 @@ This phase focuses on refining the project's identity, user experience, and clea
 #### **Branding and Identity**
 
 - [x] **Update README.md:** Describe what Haiku Scribe is, its features, and why someone would want to use it.
-- [ ] **Update Page Title & Favicon:** Change the HTML page title to "Haiku Scribe" and replace the default Svelte logo with a custom one (placeholder initially, then custom asset).
+- [x] **Update Page Title & Favicon:** Change the HTML page title to "Haiku Scribe" and replace the default Svelte logo with a custom one (placeholder initially, then custom asset).
 
 #### **Application Layout and Navigation**
 
-- [ ] **Create a Shared Header:** Add a persistent header to the application in `src/routes/+layout.svelte`. This header should contain the application's name and clear navigation links to switch between the "Editor" (/) and "My Haikus" (/my-haikus) pages.
-- [ ] **Add a Footer:** Implement a simple footer for the application.
+- [x] **Create a Shared Header:** Add a persistent header to the application in `src/routes/+layout.svelte`. This header should contain the application's name and clear navigation links to switch between the "Editor" (/) and "My Haikus" (/my-haikus) pages.
+- [x] **Add a Footer:** Implement a simple footer for the application.
 
 #### **Code and Comment Cleanup**
 
