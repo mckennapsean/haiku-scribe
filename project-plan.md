@@ -119,7 +119,7 @@ This phase focuses on refining the project's identity, user experience, and clea
 
 #### **Branding and Identity**
 
-- [ ] **Update README.md:** Describe what Haiku Scribe is, its features, and why someone would want to use it.
+- [x] **Update README.md:** Describe what Haiku Scribe is, its features, and why someone would want to use it.
 - [ ] **Update Page Title & Favicon:** Change the HTML page title to "Haiku Scribe" and replace the default Svelte logo with a custom one (placeholder initially, then custom asset).
 
 #### **Application Layout and Navigation**
