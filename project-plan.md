@@ -104,11 +104,11 @@ This final phase is about adding personality and delight to the finished applica
 - [x] **Initial Focus:** Ensure the first line's textarea is focused on page load, with the caret at the end of any existing draft text.
 - [x] **Save Validation:** Implement logic to prevent saving empty haikus and optionally warn the user if the haiku is incomplete (not 5-7-5).
 
-- [ ] **Design Easter Egg Triggers:** Decide how users will activate the easter eggs. For example, typing "10001" or "0x11" directly into a haiku line.
+- [x] **Design Easter Egg Triggers:** Decide how users will activate the easter eggs. For example, typing "10001" or "0x11" directly into a haiku line.
 
-- [ ] **Implement Visual Easter Egg:** Create a fun, subtle visual effect when an easter egg is triggered. This could be a brief color shift, a shower of confetti, or a simple animation.
+- [x] **Implement Visual Easter Egg:** Create a fun, subtle visual effect when an easter egg is triggered. This could be a brief color shift, a shower of confetti, or a simple animation.
 
-- [ ] **Implement Console Easter Egg:** Add a creative message that logs to the browser's developer console, rewarding curious users who look under the hood. For example: `console.log("Haiku Scribe // 10001 // 0x11");`
+- [x] **Implement Console Easter Egg:** Add a creative message that logs to the browser's developer console, rewarding curious users who look under the hood. For example: `console.log("Haiku Scribe // 10001 // 0x11");`
 
 
 ---

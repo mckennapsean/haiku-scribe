@@ -29,6 +29,14 @@
   $: syllableCount3 = syllable(line3);
   $: isHaikuDone = syllableCount1 === 5 && syllableCount2 === 7 && syllableCount3 === 5;
 
+  $: isEasterEggActive = [line1, line2, line3].some(line =>
+    line.includes('10001') || line.toLowerCase().includes('0x11')
+  );
+
+  $: if (isEasterEggActive) {
+    console.log("Haiku Scribe // 10001 // 0x11");
+  }
+
   function getSyllableClass(count: number, target: number): string {
     if (count < target) {
       return 'under-count';
@@ -187,6 +195,7 @@
   <div
     class="haiku-editor-card"
     class:haiku-done={isHaikuDone}
+    class:easter-egg-active={isEasterEggActive}
     bind:this={editorElement}
     style="transform: translateX({dragX}px); transition: {isDragging ? 'none' : 'transform 0.3s ease-out'};"
     on:mousedown={handleStart}
@@ -247,11 +256,16 @@
     cursor: grab;
     touch-action: pan-y; /* Allow vertical scrolling, but handle horizontal drag */
     /* Initial transition for snap-back and slide-off */
-    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, background-color 0.5s ease, box-shadow 0.5s ease;
   }
 
   .haiku-done {
     background-color: #e6ffe6; /* Light green for done haikus */
+  }
+
+  .easter-egg-active {
+    background-color: #f3e5f5; /* Light purple for a subtle visual effect */
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
   }
 
   .haiku-editor {
