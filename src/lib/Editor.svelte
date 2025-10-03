@@ -8,6 +8,7 @@
   let line1: string;
   let line2: string;
   let line3: string;
+  let line1Textarea: HTMLTextAreaElement; // Reference to the first textarea
 
   // Initialize from local storage
   haikuDraftStore.subscribe(draft => {
@@ -141,6 +142,12 @@
     window.addEventListener('touchmove', handleMove as EventListener);
     window.addEventListener('touchend', handleEnd);
 
+    // Focus the first line's textarea and place the caret at the end of the text
+    if (line1Textarea) {
+      line1Textarea.focus();
+      line1Textarea.selectionStart = line1Textarea.selectionEnd = line1Textarea.value.length;
+    }
+
     return () => {
       window.removeEventListener('mousemove', handleMove as EventListener);
       window.removeEventListener('mouseup', handleEnd);
@@ -172,6 +179,7 @@
     <div class="haiku-editor">
       <div class="line-input-group">
         <textarea
+          bind:this={line1Textarea}
           bind:value={line1}
           placeholder="First line"
           class={getSyllableClass(syllableCount1, 5)}

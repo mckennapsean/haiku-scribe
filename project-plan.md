@@ -101,7 +101,7 @@ This final phase is about adding personality and delight to the finished applica
 - [x] **Placeholder Text Cleanup:** Simplify placeholder text (e.g., remove "First/Second/Third line" and "syllables" count).
 - [x] **Textarea Styling:** Remove the resize handle from textareas and style them to blend better with the card background.
 - [x] **Completion Feedback:** Add visual feedback (e.g., a color change or icon) to the card when the haiku is complete (5-7-5).
-- [ ] **Initial Focus:** Ensure the first line's textarea is focused on page load, with the caret at the end of any existing draft text.
+- [x] **Initial Focus:** Ensure the first line's textarea is focused on page load, with the caret at the end of any existing draft text.
 - [ ] **Save Validation:** Implement logic to prevent saving empty haikus and optionally warn the user if the haiku is incomplete (not 5-7-5).
 
 - [ ] **Design Easter Egg Triggers:** Decide how users will activate the easter eggs. For example, typing "10001" or "0x11" directly into a haiku line.
